@@ -6,10 +6,14 @@
  * 여기서 대부분의 작업들이 일어납니다.
  */
 
+import Search from "../utils/Search";
+
 export default function Home() {
   return (
-    <main className=" min-h-screen">
-      <h1>here has the content</h1>
+    <main className="Home ">
+      <div className="mt-[5rem]">
+        <Search />
+      </div>
     </main>
   );
 }
