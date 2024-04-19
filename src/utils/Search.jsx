@@ -1,10 +1,18 @@
 import { useNavigate } from "react-router-dom";
+import { sendPromptToChatGpt } from "../api/api-prompt";
+import { useState } from "react";
 
 export default function Search() {
   const navigate = useNavigate();
+  const [componentName, setComponentName] = useState("");
+
+  const handleChange = (event) => {
+    setComponentName(event.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    sendPromptToChatGpt(componentName);
     navigate(`/Code`);
   };
 
@@ -36,6 +44,7 @@ export default function Search() {
             </svg>
           </div>
           <input
+            onChange={handleChange}
             type="search"
             id="default-search"
             name="searchQuery"
