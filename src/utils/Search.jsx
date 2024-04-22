@@ -1,11 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import { sendPromptToChatGpt } from "../api/api-prompt";
+import { useState } from "react";
 
 export default function Search() {
   const navigate = useNavigate();
+  const [componentName, setComponentName] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleChange = (event) => {
+    setComponentName(event.target.value);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate(`/Code`);
+    let content = "";
+    content = await sendPromptToChatGpt(componentName);
+    // Code 컴포넌트로 이동 및 props 전달
+    navigate(`/Code`, { state: { props: content } });
   };
 
   return (
@@ -36,6 +46,7 @@ export default function Search() {
             </svg>
           </div>
           <input
+            onChange={handleChange}
             type="search"
             id="default-search"
             name="searchQuery"
