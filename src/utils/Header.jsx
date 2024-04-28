@@ -6,6 +6,7 @@
  */
 
 import Github from "./Github";
+import LoginDrawer from "./LoginDrawer";
 
 export default function Header() {
   return (
@@ -26,8 +27,8 @@ export default function Header() {
           <button className="font-[500] font-['Roboto'] hover:text-blue-600 hover:underline duration-150 text-lg ">
             blog
           </button>
-          <button className="font-[500] font-['Roboto'] hover:text-blue-600 hover:underline duration-150 text-lg ">
-            Login
+          <button>
+            <LoginDrawer />
           </button>
           <button className="font-[500] font-['Roboto'] hover:text-blue-600 hover:underline duration-150 text-lg ">
             Menu
