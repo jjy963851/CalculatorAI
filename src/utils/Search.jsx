@@ -13,9 +13,21 @@ export default function Search() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let content = "";
-    content = await sendPromptToChatGpt(componentName);
-    // Code 컴포넌트로 이동 및 props 전달
-    navigate(`/Code`, { state: { props: content } });
+
+    try {
+      content = await sendPromptToChatGpt(componentName);
+      // Code 컴포넌트로 이동 및 props 전달
+      navigate(`/Code`, { state: { props: content } });
+    } catch (ex) {
+      // 만료시 로그인 리다이렉트
+      if (ex.response && ex.response.status === 401) {
+        // 401 redirect login page
+        window.location.href = import.meta.env.VITE_BACKEND_URL + "/oauth2/authorization/google";
+      } else {
+        // unexpected 에러가 발생한 경우
+        console.log("에러가 발생했습니다.");
+      }
+    }
   };
 
   return (
