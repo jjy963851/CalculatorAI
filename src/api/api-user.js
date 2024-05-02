@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAccessToken } from "./api-token";
 
 export const fetchUserInfo = async () => {
-  const url = "http://localhost:8080/api/user";
+  const url = import.meta.env.VITE_BACKEND_URL + "/api/user";
 
   try {
     const response = await axios.get(url, {

@@ -12,8 +12,13 @@ export function getAccessToken() {
   return null; // 액세스 토큰을 찾지 못한 경우
 }
 
+// 쿠키를 삭제하는 함수
+function deleteCookie(name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+}
+
 export const sendPromptToChatGpt = async (componentName) => {
-  const url = "http://localhost:8080/api/v1/chatGpt/prompt";
+  const url = import.meta.env.VITE_BACKEND_URL + "/api/v1/chatGpt/prompt";
   const data = {
     userPrompt: componentName,
   };
@@ -26,6 +31,23 @@ export const sendPromptToChatGpt = async (componentName) => {
     });
     const content = response.data.choices[0].message.content;
     return content;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+};
+
+export const logout = async () => {
+  const url = import.meta.env.VITE_BACKEND_URL + "/api/logout";
+
+  try {
+    await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
+    });
+    deleteCookie("access_token");
+    deleteCookie("refresh_token");
   } catch (error) {
     console.error("Error:", error);
     throw error;
