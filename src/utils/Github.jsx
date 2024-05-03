@@ -60,7 +60,7 @@ export default function Github() {
             </li>
             <li>
               <a
-                href="https://github.com/kwonbokeun"
+                href="https://github.com/algoalgo007"
                 className="block px-4 py-2 hover:bg-gray-100  "
               >
                 Yoon Ki Bum

@@ -9,7 +9,10 @@ export default function LoginDrawer() {
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
 
@@ -26,14 +29,18 @@ export default function LoginDrawer() {
       <div className=" justify-center px-6  lg:px-8 bg-white rounded-tl-[32px] rounded-tr-[32px] shadow pb-4">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-4 text-center text-[1.5rem] font-[800] ">
-            Calculator <span className="font-[800] text-purple-600">AI</span> Login
+            Calculator <span className="font-[800] text-purple-600">AI</span>{" "}
+            Login
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="items-center justify-center">
             <a
-              href={import.meta.env.VITE_BACKEND_URL + "/oauth2/authorization/google"}
+              href={
+                import.meta.env.VITE_BACKEND_URL +
+                "/oauth2/authorization/google"
+              }
               className=" mt-4 relative cursor-pointer"
             >
               {/* 여기에 로그인 주소창 링크 걸기 */}
@@ -72,8 +79,14 @@ export default function LoginDrawer() {
                         fill="#dd2c00"
                         d="M7.158,13.264l8.843,14.862L21,27L7.158,13.264z"
                       ></path>
-                      <path fill="#558b2f" d="M23.157,44l8.934-16.059L28,25L23.157,44z"></path>
-                      <path fill="#f9a825" d="M41.865,15H24l-1.579,4.58L41.865,15z"></path>
+                      <path
+                        fill="#558b2f"
+                        d="M23.157,44l8.934-16.059L28,25L23.157,44z"
+                      ></path>
+                      <path
+                        fill="#f9a825"
+                        d="M41.865,15H24l-1.579,4.58L41.865,15z"
+                      ></path>
                       <path
                         fill="#fff"
                         d="M33,24c0,4.969-4.031,9-9,9s-9-4.031-9-9s4.031-9,9-9S33,19.031,33,24z"
@@ -101,11 +114,15 @@ export default function LoginDrawer() {
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <div className=" font-['Roboto'] hover:text-blue-600 hover:underline duration-150 text-[1rem] text-black">
-              Login
+            <div className=" font-['Roboto'] text-[#edf2f4] hover:text-purple-600 hover:underline duration-150 text-[1rem] ">
+              LOGIN
             </div>
           </Button>
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
             {list(anchor)}
           </Drawer>
         </React.Fragment>

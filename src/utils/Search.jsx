@@ -22,7 +22,8 @@ export default function Search() {
       // 만료시 로그인 리다이렉트
       if (ex.response && ex.response.status === 401) {
         // 401 redirect login page
-        window.location.href = import.meta.env.VITE_BACKEND_URL + "/oauth2/authorization/google";
+        window.location.href =
+          import.meta.env.VITE_BACKEND_URL + "/oauth2/authorization/google";
       } else {
         // unexpected 에러가 발생한 경우
         console.log("에러가 발생했습니다.");
@@ -32,7 +33,7 @@ export default function Search() {
 
   return (
     <div>
-      <form className="max-w-2xl mx-auto border-2 p-[1rem] rounded-full">
+      <form className="max-w-2xl mx-auto border-2 p-[1rem] rounded-full border-[#9d4edd] ">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -62,7 +63,7 @@ export default function Search() {
             type="search"
             id="default-search"
             name="searchQuery"
-            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-purple-500 focus:border-black "
+            className="block w-full p-4 ps-10 text-sm text-[#edf2f4] border border-gray-300 rounded-full bg-[#121212] focus:ring-purple-500 focus:border-black "
             placeholder="Search Mockups, Logos..."
             required
           />
@@ -71,7 +72,7 @@ export default function Search() {
             type="submit"
             className="text-white absolute end-2.5 bottom-2.5 bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-purple-200 font-[600] rounded-full text-xs px-4 py-2 "
           >
-            MAKE MAGIC
+            MAKE <span className="text-[#9d4edd]">MAGIC</span>
           </button>
         </div>
       </form>
