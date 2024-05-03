@@ -36,7 +36,13 @@ export default function LoginDrawer() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="items-center justify-center">
-            <a href="/login" className=" mt-4 relative cursor-pointer">
+            <a
+              href={
+                import.meta.env.VITE_BACKEND_URL +
+                "/oauth2/authorization/google"
+              }
+              className=" mt-4 relative cursor-pointer"
+            >
               {/* 여기에 로그인 주소창 링크 걸기 */}
               <div className=" bg-violet-50 rounded-[100px] shadow ">
                 <div className="self-stretch grow shrink basis-0 pl-4 pr-6 py-2.5 justify-center items-center flex">
@@ -108,8 +114,8 @@ export default function LoginDrawer() {
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <div className=" font-['Roboto'] hover:text-blue-600 hover:underline duration-150 text-[1rem] text-black">
-              Login
+            <div className=" font-['Roboto'] text-[#edf2f4] hover:text-purple-600 hover:underline duration-150 text-[1rem] ">
+              LOGIN
             </div>
           </Button>
           <Drawer

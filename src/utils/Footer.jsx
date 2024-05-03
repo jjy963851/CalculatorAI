@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className=" shadow-t-lg bg-gray-100 ">
+    <footer className=" shadow-t-lg HeaderColor ">
       <div className=" mx-auto  p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-gray-500 sm:text-center ">
           © 2024{" "}

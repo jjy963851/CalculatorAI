@@ -5,21 +5,22 @@ import Code from "./Pages/Code";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/Code",
-    element: <Code />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/Code",
+        element: <Code />,
+      },
+    ],
   },
 ]);
 
 function App() {
-  return (
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

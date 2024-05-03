@@ -7,38 +7,82 @@
 
 import Github from "./Github";
 import LoginDrawer from "./LoginDrawer";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export default function Header() {
+  const session = null;
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col HeaderColor ">
       <div className="flex justify-between my-[1rem] px-[2rem] ">
         {/* 메인로고가 들어갈자리. 클릭하면 홈페이지로 이동 */}
         <h1 className="text-2xl font-['Roboto'] font-[500]">
           {" "}
-          <a href="/">
-            Calculator <span className="font-[800] text-purple-600">AI</span>
+          <a
+            href="/"
+            className="cursor-pointer hover:text-[20px] duration-150 ease-in text-[#9d4edd]"
+          >
+            Calculator <span className="font-[800] text-purple-600 ">AI</span>
           </a>
         </h1>
         {/* 링크들이 들어갈자리. 커스텀으로 깃허브등 다른 주소를 넣으시면됩니다. */}
-        <div className=" space-x-[2rem]">
+        <div className=" space-x-[2rem] flex  ">
           <button>
             <Github />
           </button>
-          <button className="font-[500] font-['Roboto'] hover:text-blue-600 hover:underline duration-150 text-lg ">
-            blog
+          <button className="font-[500] font-['Roboto'] text-[#edf2f4] hover:text-purple-600 hover:underline duration-150 text-lg ">
+            Blog
           </button>
-          <button>
-            <LoginDrawer />
-          </button>
-          <button className="font-[500] font-['Roboto'] hover:text-blue-600 hover:underline duration-150 text-lg ">
+
+          <button className="font-[500] font-['Roboto'] text-[#edf2f4] hover:text-purple-600 hover:underline duration-150 text-lg ">
             Menu
           </button>
+          <span className=" font-[500] font-['Roboto'] text-[#edf2f4] text-lg  pr-[5rem]">
+            {/*구글에서 제공하는 세션이나 토큰값이 있다면 이름 및 로그아웃 제공*/}
+            {session?.user ? (
+              <div className="flex ">
+                <AccountCircleIcon className="scale-150 text-gray-500" />
+                <p className="text-sm font-semibold font-['Roboto']">
+                  {session.user.name}
+                </p>
+
+                <button
+                  onClick={async () => {
+                    {
+                      /**로그아웃 함수 넣기 */
+                    }
+                    alert(`Good Bye! ${session.user?.name}`, {
+                      //position: 'top-right',
+                    });
+                  }}
+                >
+                  <p className="text-lg  font-['Roboto'] hover:font-semibold duration-150 ">
+                    Log out
+                  </p>
+                </button>
+              </div>
+            ) : (
+              <div className=" mt-[3px]">
+                <button>
+                  <LoginDrawer />
+                </button>
+              </div>
+            )}
+          </span>
+
+          {session?.user ? (
+            <div></div>
+          ) : (
+            <div className="flex relative space-x-3 mt-[0.5rem] ">
+              <p className="text-md text-[#edf2f4]">Guest</p>
+              <AccountCircleIcon className="scale-150 text-gray-500" />
+            </div>
+          )}
         </div>
       </div>
 
       {/* <!-- Breadcrumb --> */}
       <nav
-        className="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-sm bg-gray-50 "
+        className="flex px-5 py-3 text-gray-700 border border-[#121212] rounded-sm bg-[#0c1821] "
         aria-label="Breadcrumb"
       >
         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -82,7 +126,7 @@ export default function Header() {
               </svg>
               <a
                 href="#"
-                className="ms-1 text-sm font-medium text-gray-400 hover:text-blue-600 md:ms-2 "
+                className="ms-1 text-sm font-medium  hover:text-blue-600 md:ms-2 text-[#edf2f4]"
               >
                 AI tools
               </a>
@@ -113,7 +157,7 @@ export default function Header() {
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
-                <span className="ms-1 text-sm font-medium  md:ms-2 ">
+                <span className="ms-1 text-sm font-medium  md:ms-2 text-[#edf2f4] ">
                   React + Tailwind CSS AI Component Generator
                 </span>
               </a>
@@ -122,16 +166,16 @@ export default function Header() {
         </ol>
       </nav>
 
-      <div className="border-b-2 py-[1rem]  shadow-md xs:text-md sm:text-lg md:text-xl ">
+      <div className=" py-[1rem]  shadow-md xs:text-md sm:text-lg md:text-xl text-[#edf2f4]">
         {/* 여기는 페이지의 경로, 또는 어떤 스택을 사용했는지를 보여주는 곳으로 사용 */}
         <h2 className="flex justify-center">
-          <span className="text-gray-500 font-[500]">Create and preview </span>
+          <span className="text-[#edf2f4] font-[500]">Create and preview </span>
           <span className="flex pl-1 ">
             <img src="./react-2.svg" width={25} height={25} alt="react" />
-            <span className=" font-semibold">React</span>
+            <span className=" font-semibold text-[#edf2f4]">React</span>
           </span>{" "}
           +{" "}
-          <span className="flex px-2 font-semibold">
+          <span className="flex px-2 font-semibold text-[#edf2f4]">
             <img
               src="./tailwind-css-2.svg"
               width={25}
@@ -141,11 +185,11 @@ export default function Header() {
             Tailwind CSS
           </span>{" "}
           <span>
-            <span className="font-['Roboto']">Calculator</span>
+            <span className="font-['Roboto'] text-[#edf2f4]">Calculator</span>
             <span className="font-[800] text-purple-600 pr-2 font-['Roboto']">
               AI
             </span>{" "}
-            <span className="text-gray-500 font-[500]">using AI</span>
+            <span className="text-[#edf2f4] font-[500]">using AI</span>
           </span>
         </h2>
       </div>

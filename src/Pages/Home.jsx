@@ -7,12 +7,16 @@
  */
 
 import Search from "../utils/Search";
-
+import Carousel from "../utils/Craousel/Craousel";
+import { countries } from "../utils/Craousel/CraouselData";
 export default function Home() {
   return (
-    <main className="Home ">
-      <div className="mt-[5rem]">
+    <main className="Home">
+      <div className="pt-[5rem]">
         <Search />
+        <div className="flex justify-center mt-[5rem] ">
+          <Carousel images={countries} />
+        </div>
       </div>
     </main>
   );
