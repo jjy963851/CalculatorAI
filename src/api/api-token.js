@@ -1,7 +1,9 @@
 import axios from "axios";
 
+
 // 쿠키에서 액세스 토큰 가져오기
 export function getAccessToken() {
+   
   const cookies = document.cookie.split(";"); // 모든 쿠키 가져오기
   for (let i = 0; i < cookies.length; i++) {
     const cookie = cookies[i].trim();
@@ -18,6 +20,7 @@ function deleteCookie(name) {
 }
 
 export const sendPromptToChatGpt = async (componentName) => {
+   
   const url = import.meta.env.VITE_BACKEND_URL + "/api/v1/chatGpt/prompt";
   const data = {
     userPrompt: componentName,
@@ -28,6 +31,7 @@ export const sendPromptToChatGpt = async (componentName) => {
       headers: {
         Authorization: `Bearer ${getAccessToken()}`,
       },
+      withCredentials: true
     });
     const content = response.data.choices[0].message.content;
     return content;
@@ -38,6 +42,7 @@ export const sendPromptToChatGpt = async (componentName) => {
 };
 
 export const logout = async () => {
+   
   const url = import.meta.env.VITE_BACKEND_URL + "/api/logout";
 
   try {
@@ -45,6 +50,7 @@ export const logout = async () => {
       headers: {
         Authorization: `Bearer ${getAccessToken()}`,
       },
+      withCredentials: true
     });
     deleteCookie("access_token");
     deleteCookie("refresh_token");

@@ -1,8 +1,6 @@
 import axios from "axios";
 import { getAccessToken } from "./api-token";
 
-axios.defaults.withCredentials = true;
-
 export const fetchUserInfo = async () => {
   const url = import.meta.env.VITE_BACKEND_URL + "/api/user";
 
@@ -11,6 +9,7 @@ export const fetchUserInfo = async () => {
       headers: {
         Authorization: `Bearer ${getAccessToken()}`,
       },
+      withCredentials: true,
     });
     return response;
   } catch (error) {
