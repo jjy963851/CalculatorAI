@@ -1,7 +1,9 @@
 import axios from "axios";
 import { getAccessToken } from "./api-token";
 
+
 export const sendPromptToChatGpt = async (componentName) => {
+   
   const url = import.meta.env.VITE_BACKEND_URL + `/api/v1/chatGpt/prompt`;
   const data = {
     userPrompt: componentName,
@@ -12,6 +14,7 @@ export const sendPromptToChatGpt = async (componentName) => {
       headers: {
         Authorization: `Bearer ${getAccessToken()}`,
       },
+      withCredentials: true
     });
     const content = response.data.choices[0].message.content;
     console.log(content);
