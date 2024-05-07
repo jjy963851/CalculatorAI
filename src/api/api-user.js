@@ -1,6 +1,8 @@
 import axios from "axios";
 import { getAccessToken } from "./api-token";
 
+axios.defaults.withCredentials = true;
+
 export const fetchUserInfo = async () => {
   const url = import.meta.env.VITE_BACKEND_URL + "/api/user";
 
